@@ -5,20 +5,19 @@
   
 
   
-  <title>归档: 2020/4 | peter&#39;s blog</title>
+  <title>低压非居民合同新版和批量修改工具说明 | peter&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Share my code and articles about IT technology in a electricity power company">
-<meta property="og:type" content="website">
-<meta property="og:title" content="peter&#39;s blog">
-<meta property="og:url" content="http://peterdavis77.github.io/archives/2020/04/index.html">
+  <meta name="description" content="概述低压非居民合同经分公司审核后，发现几个问题，根据上级提出了问题对程序进行了修改，主要修改内容如下：  如果用户只有一种电价，原程序就不生成定量定比的描述文本。根据分公司专工意见，本次修改为：即便只有一种电价，也生成一条一条定量定比描述段落，填空部分填入斜杠／。 修改了部分文档细节。  使用方法 提供两个压缩文件，一个为“新版生成程序”，另一个为“批量修改工具”。  建议还未生成合同文档或生成文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="低压非居民合同新版和批量修改工具说明">
+<meta property="og:url" content="http://peterdavis77.github.io/2020/06/04/new_hdzl_l/index.html">
 <meta property="og:site_name" content="peter&#39;s blog">
-<meta property="og:description" content="Share my code and articles about IT technology in a electricity power company">
+<meta property="og:description" content="概述低压非居民合同经分公司审核后，发现几个问题，根据上级提出了问题对程序进行了修改，主要修改内容如下：  如果用户只有一种电价，原程序就不生成定量定比的描述文本。根据分公司专工意见，本次修改为：即便只有一种电价，也生成一条一条定量定比描述段落，填空部分填入斜杠／。 修改了部分文档细节。  使用方法 提供两个压缩文件，一个为“新版生成程序”，另一个为“批量修改工具”。  建议还未生成合同文档或生成文">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-04T00:43:53.668Z">
+<meta property="article:modified_time" content="2020-06-04T01:47:49.725Z">
 <meta property="article:author" content="peter_davis@163.com">
-<meta property="article:tag" content="delphi">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="c#">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="供用电合同">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="peter&#39;s blog" type="application/atom+xml">
@@ -68,97 +67,74 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/29/Delphi-component-wroted-by-me/" class="archive-article-date">
-  <time datetime="2020-04-29T11:44:57.000Z" itemprop="datePublished">4月 29</time>
+        <section id="main"><article id="post-new_hdzl_l" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/04/new_hdzl_l/" class="article-date">
+  <time datetime="2020-06-04T00:43:53.668Z" itemprop="datePublished">2020-06-04</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/29/Delphi-component-wroted-by-me/">Delphi component wroted by me</a>
+    <h1 class="article-title" itemprop="name">
+      低压非居民合同新版和批量修改工具说明
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BD%8E%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" class="archive-article-date">
-  <time datetime="2020-04-24T14:31:56.000Z" itemprop="datePublished">4月 24</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BD%8E%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/">供用电合同生产程序（低压版）简要说明</a>
-    </h1>
-  
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>低压非居民合同经分公司审核后，发现几个问题，根据上级提出了问题对程序进行了修改，主要修改内容如下：</p>
+<ul>
+<li>如果用户只有一种电价，原程序就不生成定量定比的描述文本。根据分公司专工意见，本次修改为：即便只有一种电价，也生成一条一条定量定比描述段落，填空部分填入斜杠／。</li>
+<li>修改了部分文档细节。</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
+<li><p>提供两个压缩文件，一个为<strong>“新版生成程序”</strong>，另一个为<strong>“批量修改工具”</strong>。</p>
+</li>
+<li><p>建议还未生成合同文档或生成文档量较少的用户使用<strong>“新版生成程序”</strong>，重新生成文档，并插图形成结果文档。</p>
+<ul>
+<li><p>安装方法：从<strong>“新版生成程序.rar”</strong>压缩文件中解压出<em>htzl_l.exe</em> 和 <em>m1.doc</em> 两个文件，将<em>htzl_l.exe<em>复制到</em>d:\htzl_l</em> 目录下，将<em>m1.doc<em>复制到</em>d:\htzl_l\models</em> 目录下，运行<em>htzl_l.exe</em> 即可。</p>
+<p>在生成文档之前，请修改<em>m1,doc</em>第13页，将供电所地址和联系人改成自己的地址和联系</p>
+</li>
+</ul>
+</li>
+<li><p>已生成合同的，请使用<strong>“批量修改工具”</strong>对已生成合同进行修改，从<strong>“批量修改工具”</strong>中解压出程序<strong>plxg.exe</strong>，并运行，点击<strong>“选择目录</strong>，选择已生成文档的目录，点击<strong>“处理”</strong>即开始对文件进行批量修改，修改后的文件存放在相应目录下的<em>new</em>目录中。</p>
+<ul>
+<li>如原文档中签署地点和供电所地址写错，在点击<strong>“处理”</strong>按钮前可填入相应原文字和修改文字，在批量修改时刻同时修改。</li>
+</ul>
+</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E9%AB%98%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" class="archive-article-date">
-  <time datetime="2020-04-24T14:31:33.000Z" itemprop="datePublished">4月 24</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E9%AB%98%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/">供用电合同生产程序（高压版）简要说明</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/24/hello-world/" class="archive-article-date">
-  <time datetime="2020-04-24T08:55:29.010Z" itemprop="datePublished">4月 24</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://peterdavis77.github.io/2020/06/04/new_hdzl_l/" data-id="ckb04aw060000hkr2dbgj1iyk" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/hello-world/">Hello World</a>
-    </h1>
-  
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C/" rel="tag">供用电合同</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/28/json-note1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">json笔记1</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
