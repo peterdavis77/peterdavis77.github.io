@@ -5,20 +5,21 @@
   
 
   
-  <title>peter&#39;s blog</title>
+  <title>开发笔记（2020-5-28 ~ 2020-7-5) | peter&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Share my code and articles about IT technology in a electricity power company">
-<meta property="og:type" content="website">
-<meta property="og:title" content="peter&#39;s blog">
-<meta property="og:url" content="http://peterdavis77.github.io/index.html">
+  <meta name="description" content="2020-5-28ajax 功能初步完成 表格可变颜色，下方小表格可点击后更新，电话号码修改基本完成，验证没做。 下一步，编写更新电话号码  2020-6-1完成电话号码修改功能，前台后台都已完成。 下一步，完成备注功能。  2020-6-2优化程序，加快click相应速度，不在调用ajax 从服务器取json,一次读完，依靠js填充当前记录  要点：  依靠 getElementById, 靠">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发笔记（2020-5-28 ~ 2020-7-5)">
+<meta property="og:url" content="http://peterdavis77.github.io/2020/07/11/notes_2/index.html">
 <meta property="og:site_name" content="peter&#39;s blog">
-<meta property="og:description" content="Share my code and articles about IT technology in a electricity power company">
+<meta property="og:description" content="2020-5-28ajax 功能初步完成 表格可变颜色，下方小表格可点击后更新，电话号码修改基本完成，验证没做。 下一步，编写更新电话号码  2020-6-1完成电话号码修改功能，前台后台都已完成。 下一步，完成备注功能。  2020-6-2优化程序，加快click相应速度，不在调用ajax 从服务器取json,一次读完，依靠js填充当前记录  要点：  依靠 getElementById, 靠">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-11T00:36:00.000Z">
+<meta property="article:modified_time" content="2020-07-11T00:37:30.130Z">
 <meta property="article:author" content="peter_davis@163.com">
 <meta property="article:tag" content="delphi">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="c#">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="peter&#39;s blog" type="application/atom+xml">
@@ -68,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-notes_2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-notes_2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/07/11/notes_2/" class="article-date">
   <time datetime="2020-07-11T00:36:00.000Z" itemprop="datePublished">2020-07-11</time>
@@ -83,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/11/notes_2/">开发笔记（2020-5-28 ~ 2020-7-5)</a>
+    <h1 class="article-title" itemprop="name">
+      开发笔记（2020-5-28 ~ 2020-7-5)
     </h1>
   
 
@@ -145,327 +144,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-new_hdzl_l" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/04/new_hdzl_l/" class="article-date">
-  <time datetime="2020-06-04T00:43:53.668Z" itemprop="datePublished">2020-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/new_hdzl_l/">低压非居民合同新版和批量修改工具说明</a>
-    </h1>
+    <a href="/2020/06/04/new_hdzl_l/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">低压非居民合同新版和批量修改工具说明</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>低压非居民合同经分公司审核后，发现几个问题，根据上级提出了问题对程序进行了修改，主要修改内容如下：</p>
-<ul>
-<li>如果用户只有一种电价，原程序就不生成定量定比的描述文本。根据分公司专工意见，本次修改为：即便只有一种电价，也生成一条一条定量定比描述段落，填空部分填入斜杠／。</li>
-<li>修改了部分文档细节。</li>
-</ul>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
-<li><p>提供两个压缩文件，一个为<strong>“新版生成程序”</strong>，另一个为<strong>“批量修改工具”</strong>。</p>
-</li>
-<li><p>建议还未生成合同文档或生成文档量较少的用户使用<strong>“新版生成程序”</strong>，重新生成文档，并插图形成结果文档。</p>
-<ul>
-<li><p>安装方法：从<strong>“新版生成程序.rar”</strong>压缩文件中解压出<em>htzl_l.exe</em> 和 <em>m1.doc</em> 两个文件，将<em>htzl_l.exe<em>复制到</em>d:\htzl_l</em> 目录下，将<em>m1.doc<em>复制到</em>d:\htzl_l\models</em> 目录下，运行<em>htzl_l.exe</em> 即可。</p>
-<p>在生成文档之前，请修改<em>m1,doc</em>第13页，将供电所地址和联系人改成自己的地址和联系</p>
-</li>
-</ul>
-</li>
-<li><p>已生成合同的，请使用<strong>“批量修改工具”</strong>对已生成合同进行修改，从<strong>“批量修改工具”</strong>中解压出程序<strong>plxg.exe</strong>，并运行，点击<strong>“选择目录</strong>，选择已生成文档的目录，点击<strong>“处理”</strong>即开始对文件进行批量修改，修改后的文件存放在相应目录下的<em>new</em>目录中。</p>
-<ul>
-<li>如原文档中签署地点和供电所地址写错，在点击<strong>“处理”</strong>按钮前可填入相应原文字和修改文字，在批量修改时刻同时修改。</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://peterdavis77.github.io/2020/06/04/new_hdzl_l/" data-id="ckb04aw060000hkr2dbgj1iyk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C/" rel="tag">供用电合同</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-json-note1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/28/json-note1/" class="article-date">
-  <time datetime="2020-05-28T10:02:00.000Z" itemprop="datePublished">2020-05-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/28/json-note1/">json笔记1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="json兼容性"><a href="#json兼容性" class="headerlink" title="json兼容性"></a>json兼容性</h2><ul>
-<li><p>对象创建</p>
-<p>chrome 和 ie8 以上版本可以使用 XMLHttpRequest, ie7 以下版本只能使用 ActiveX。兼容性代码如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)</span><br><span class="line">    xhr = <span class="keyword">new</span> XMLHttpRequest();						<span class="comment">//for chrome or ie8 and greater</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);	<span class="comment">// for ie6 and 7</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>解析（parse）</p>
-<p>chrome 可用JSON.parse，IE会收到错误 <em>JSON未定义</em> ，前后加括号直接转换就行。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(<span class="built_in">JSON</span>)==<span class="string">'undefined'</span>)</span><br><span class="line">    <span class="keyword">var</span> obj = <span class="built_in">eval</span>(<span class="string">"("</span> + responseText +<span class="string">")"</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">var</span> obj = <span class="built_in">JSON</span>.parse(responseText);</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<p>  <strong>以上小坑，免跳！</strong></p>
-<p>2020年5月28日</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://peterdavis77.github.io/2020/05/28/json-note1/" data-id="ckaqmllhb0000d0r2cngtdr0d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Delphi-component-wroted-by-me" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/29/Delphi-component-wroted-by-me/" class="article-date">
-  <time datetime="2020-04-29T11:44:57.000Z" itemprop="datePublished">2020-04-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/Delphi-component-wroted-by-me/">Delphi component wroted by me</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="WELCOME"><a href="#WELCOME" class="headerlink" title="WELCOME"></a>WELCOME</h2><p>Welcome to visit my github repositories and hope you enjoy it. <a href="https://github.com/peterdavis77/" target="_blank" rel="noopener">click here  to visit my github repositories</a></p>
-<p>This document introduce my repository named <strong>DelphiSharedLib</strong>. You can use the  <strong>git</strong> tools to download it.  <a href="https://git-scm.com/" target="_blank" rel="noopener">click here to install git tools</a>. Locate to the folder you want to download and click the mouse’s right button and choose *”git bash here”* . Type the following command after the prompt:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/peterdavis77/DelphiSharedLib.git</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="PREVIEW"><a href="#PREVIEW" class="headerlink" title="PREVIEW"></a>PREVIEW</h2><p>This repository contains 3 components of Delphi. You can add this files to your Delphi project to make your application have these futures as below:</p>
-<ul>
-<li>Draw bar-code images on printer or screen.</li>
-<li>Provides a  virtual printer component that you can preview before print.</li>
-<li>Provide a component that help you to print a table with few codes.</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/29/Delphi-component-wroted-by-me/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://peterdavis77.github.io/2020/04/29/Delphi-component-wroted-by-me/" data-id="ck9lb3u2z00007wr28w71dm4b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bar-code/" rel="tag">Bar-code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Print-Grid/" rel="tag">Print Grid</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Virtual-printer/" rel="tag">Virtual printer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/delphi/" rel="tag">delphi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-供用电合同生产程序（低压版）简要说明" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BD%8E%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" class="article-date">
-  <time datetime="2020-04-24T14:31:56.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BD%8E%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/">供用电合同生产程序（低压版）简要说明</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>供用电合同低压非居民版的使用与高压版的使用基本相同，主要修改如下：</p>
-<ul>
-<li>去掉了高压版中 <del>用户设备维护和力率基本电费</del> 设置，原来的位置改成了<strong>用户自备发电机和UPS的设置</strong>。</li>
-<li><strong>全局参数</strong> 中增加了<strong>供电所电话</strong>的设置,因为合同文本中有相关内容。</li>
-<li>主界面增加了<strong>打印</strong>功能，供电所在使用过程中可打印抄表册下非居民用户清单。</li>
-<li>产权分界点示意图中的标注文字可自动生成，解决了高压版中的问题。</li>
-<li>因营销系统中部分台区和线路名称设置不规范，导致合同生成中关于供电点和产权分界点文字描述语句不通顺，故增加 <strong>线路台区名称规范</strong> 工具程序，用户可对线路和台区的名称进行规范后再生成合同。</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BD%8E%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://peterdavis77.github.io/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BD%8E%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" data-id="ck9lb3u3i00017wr2gvcvfhdh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/delphi/" rel="tag">delphi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BE%9B%E7%94%B5/" rel="tag">供电</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-供用电合同生产程序（高压版）简要说明" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E9%AB%98%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" class="article-date">
-  <time datetime="2020-04-24T14:31:33.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E9%AB%98%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/">供用电合同生产程序（高压版）简要说明</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装包是个.rar 文件，下载后解压缩，放在d:盘（必须），形成如下目录结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d:\htzl---database---ht.mdb(数据库文件，勿动)</span><br><span class="line">      |---models---模板文件（尽量勿动）</span><br><span class="line">      |---documents---输出合同文档</span><br><span class="line">      |---htzl.exe---程序入口</span><br></pre></td></tr></table></figure>
-
-<p>在桌面上为htzl.exe创建快捷方式，就可以运行了，生成的合同文档存放在  ==d:\htzl\documents==,<br>以 ==户号== 作为文件名，应检查并插入图片并适当修改后再使用。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E9%AB%98%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://peterdavis77.github.io/2020/04/24/%E4%BE%9B%E7%94%A8%E7%94%B5%E5%90%88%E5%90%8C%E7%94%9F%E4%BA%A7%E7%A8%8B%E5%BA%8F%EF%BC%88%E9%AB%98%E5%8E%8B%E7%89%88%EF%BC%89%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" data-id="ck9lb3u3x00037wr2gddqaaty" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/delphi/" rel="tag">delphi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BE%9B%E7%94%B5/" rel="tag">供电</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/24/hello-world/" class="article-date">
-  <time datetime="2020-04-24T08:55:29.010Z" itemprop="datePublished">2020-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://peterdavis77.github.io/2020/04/24/hello-world/" data-id="ck9lb3u4200047wr2dci1dqsk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
