@@ -15,7 +15,7 @@
 <meta property="og:description" content="2020-8-2delphi Assigned的小坑原来以为对象是否有实例可用assigned来检测，结果我错了，踩坑了！ 对象Free以后并不将指针置为nil，而是继续指向原来的地址，这时用Assigned检测仍返回true！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-02T08:12:00.000Z">
-<meta property="article:modified_time" content="2020-08-02T08:23:12.982Z">
+<meta property="article:modified_time" content="2020-08-02T09:54:06.033Z">
 <meta property="article:author" content="peter_davis@163.com">
 <meta property="article:tag" content="delphi">
 <meta name="twitter:card" content="summary">
@@ -96,7 +96,17 @@
 <p>安全的方法是：Free之后手动置为nil</p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.free;</span><br><span class="line">s:=<span class="keyword">nil</span>;</span><br></pre></td></tr></table></figure>
 
-<p>另外，把image assign到一个jpg后，就不允许再line\rectangle等手工画图了</p>
+<p>:BTW</p>
+<ul>
+<li><p>把image assign到一个jpg后，就不允许再line\rectangle等手工画图了</p>
+</li>
+<li><p>timage控件load一个jpg后，要使其随着窗口大小的变化自动调整，最好把其放进一个panel里，并设置</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img1.AutoSize:=true;</span><br><span class="line">img1.Center:=true;</span><br><span class="line">img1.Stretch:=true;			</span><br><span class="line">img1.Proportional:=true;	<span class="comment">//保持原始纵横比</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
 
       
     </div>
