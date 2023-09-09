@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+	<style>
+    body
+        {
+         font-family:sans-serif; 
+         background-color:black;
+         color:white; 
+        }
+        
+        table
+        {
+          width: 90%;
+          border-collapse:collapse;
+        }
+        
+        
+        table, th, td
+        {
+          border: 1px solid blue;
+        }
+        
+        th
+        {
+          background-color:green;
+          color:white;
+        }
+    
+    	td{text-align:center}
+    
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三相三线电能表错接线分析</title>
+</head>
+<body>
+
+    <script>
+    function Vector(per,source,cos,induOrCapa){
+        this.builder=function(per,source,cos,induOrCapa){
+        this.len=Math.abs(per);
+        switch(source.slice(1)){
+            case "u":
+                this.degree=Math.PI / 2;
+                break;
+            case "v":
+                this.degree=Math.PI * 11 / 6 ;
+                break;
+            case "w":
+                this.degree=Math.PI * 7 / 6;
+                break;
+            case "uv":
+                this.degree=Math.PI * 2 / 3;
+                this.len *= Math.sqrt(3);
+                break;
+            case "wv":
+                this.degree=Math.PI ;
+                this.len *= Math.sqrt(3);
+                break;
+            case "uw":
+                this.degree=Math.PI / 3;
+                this.len *=Math.sqrt(3);                    
+        }
+    
+        if(per<0){
+            this.degree+=Math.PI;
+            if(this.degree>2 * Math.PI){
+                this.degree -= 2 * Math.PI;
+            }
+        }
+    
+        if(induOrCapa=="indu"){
+            this.degree -= Math.acos(Math.abs(cos / 100));
+        }
+        else
+        {
+            this.degree += Math.acos(Math.abs(cos / 100));
+        }
+    
+        if(this.degree<0){
+            this.degree += 2 * Math.PI;
+        }
+    
+        if(this.degree>2 * Math.PI){
+            this.degree -= 2 * Math.PI;
+        }
+       
+        
+    }
+    this.builder(per,source,cos,induOrCapa);
+    this.x=function(){
+            return this.len * Math.cos(this.degree);
+        }
+    
+        this.y=function(){
+            return this.len * Math.sin(this.degree);
+        }
+    }
+    
+    function Element(U,I,degreeU,degreeI){
+        this.build=function(U,I,degreeU,degreeI){
+            this.U=U /100;
+            this.I=I /100;
+            this.US=this.U.toFixed(3);
+            this.IS=this.I.toFixed(3);
+            this.degreeU=degreeU;
+            this.degreeI=degreeI;
+            this.degree=this.degreeU-this.degreeI;
+            this.degree=this.degree>Math.PI?2*Math.PI-this.degree:this.degree;
+            this.degreeInAngle=(this.degree * 180 / Math.PI).toFixed(2);
+            this.cosf=Math.cos(this.degree);
+            this.sinf=Math.sin(this.degree);
+            this.cosfS=this.cosf.toFixed(2);
+            this.sinfS=this.sinf.toFixed(2);
+            this.power=this.U * this.I * this.cosf;
+            this.powerS=this.power.toFixed(2);
+            this.powerQ=this.U * this.I * this.sinf;
+            this.powerQS=this.powerQ.toFixed(2);
+        }
+        this.build(U,I,degreeU,degreeI);
+    }
+   </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+     <p style="text-align:center">
+        <span style="padding:5px;margin:5px;border-radius:3px;color:black;background-color:green;box-shadow:-10px 0 10px #2a155c"><a href="/">返回作者首页</a></span>&nbsp;&nbsp;
+        <span style="padding:5px;margin:5px;border-radius:3px;color:black;background-color: aqua;"><a href="meter.html">三相四线</a> </span>&nbsp;&nbsp;
+        <span style="padding:5px;margin:5px;border-radius:3px;color:black;background-color:green;box-shadow:-10px 0 10px green;">三相三线</span>
+    </p>     
+    
+    <div id="app" style="border: 1px;font-family:monospace;width:400px">
+        <div style="float:left"> 
+        <canvas id="canv" width="400" height="400" style="border:1px solid #ffffff">not surport canvas</canvas>        
+        <div style="background-color:yellow;color:black;" float="left">
+            元件1 
+            电压
+            <input type="number" v-model="uUPer" style="width:50px;" @change="show" /> %
+            <select v-model="uUSource"  style="width:50px;" @change="show" >
+                <option>Uuv</option>
+                <option>Uwv</option>
+                <option>Uuw</option>
+            </select>
+            &nbsp;&nbsp;电流
+            <input type="number" v-model="iUPer" style="width:50px;" @change="show"  /> %
+            <select v-model="iUSource"  style="width:50px;" @change="show" >
+                <option>Iu</option>
+                <option>Iv</option>
+                <option>Iw</option>
+            </select>
+        </div>
+        <div style="background-color:green;color:black;">
+            元件2 
+            电压
+            <input type="number" v-model="uVPer" style="width:50px;"  @change="show" /> %
+            <select v-model="uVSource"  style="width:50px;" @change="show" >
+                <option>Uuv</option>
+                <option>Uwv</option>
+                <option>Uuw</option>
+            </select>
+            &nbsp;&nbsp;电流
+            <input type="number" v-model="iVPer" style="width:50px;"  @change="show" /> %
+            <select v-model="iVSource"  style="width:50px;" @change="show" >
+                <option>Iu</option>
+                <option>Iv</option>
+                <option>Iw</option>
+            </select>
+        </div>
+
+        负载: 
+        <select v-model="induOrCapa" style="width:50px" @change="show">
+            <option value="indu">感性</option>
+            <option value="capa">容性</option>
+
+        </select>
+        &nbsp;<em>cos&phi;</em>=<input type="number" max="100" min="0" v-model="cos" style="width:50px;" @change="show" /> % &nbsp;
+        <button  @click="calc">计算</button>
+        <br /><br />
+        </div> 
+        <div v-if="resultShow" style="width:410px;margin-left:410px">
+            
+            <table style="width:100%;font-size:large">
+                <tr>
+                    <th style="background-color:blue"></th><th  style="background-color:blue">电压</th><th style="background-color:blue">电流</th>
+                    <th style="background-color:blue">功率角</th><th style="background-color:blue"><em>cos&phi;</em></th><th style="background-color:blue">有功P</th>
+                </tr>
+                
+                <tr>
+                    <td>元件1</td><td><em>{{elementU.US}}U</em></td><td><em>{{elementU.IS}}I</em></td><td><em>{{elementU.degreeInAngle}}&#176;</em></td><td><em>{{elementU.cosfS}}</em></td><td><em>{{elementU.powerS}}UI</em></td>
+                </tr>
+                <tr>
+                    <td>元件2</td><td><em>{{elementV.US}}U</em></td><td><em>{{elementV.IS}}I</em></td><td><em>{{elementV.degreeInAngle}}&#176;</em></td><td><em>{{elementV.cosfS}}</em></td><td><em>{{elementV.powerS}}UI</em></td>
+                </tr>
+ 
+                <tr>
+                    <td colspan="5">合计</td><td><em>{{thisPowerS}}UI</em></td>
+                </tr>
+                
+            </table>
+            <br />
+
+            <div style="border-radius:10px;background-color:blue;">
+              <p style="font-size:large;margin:10px;padding:10px;">
+                电表正确接法：<br />
+                <em>
+                     P<sub>正确</sub> = 3UIcos&phi;=3&times;{{cos}}%&times;UI = {{normalPowerS}}UI
+                </em>
+                <br /><br />
+                当前接法:<br />
+                <em>
+                    P<sub>当前</sub>={{thisPowerS}}UI
+                </em>
+                <br /><br />
+                更正系数:<br />
+                <em>
+                    K<sub>p</sub> =P<sub>正确</sub>&divide;P<sub>当前</sub>= {{adjustmentFactor}}%
+                </em>
+              </p>
+            </div>
+            <input type="checkbox" v-model="showQ">显示无功
+            <div v-show="showQ">
+            <table style="width:100%;font-size:large">
+                <tr>
+                    <th></th><th>电压</th><th>电流</th><th>功率角</th><th><em>sin&phi;</em></th><th>无功Q</th>
+                </tr>
+                
+                <tr>
+                    <td>元件1</td><td><em>{{elementU.US}}U</em></td><td><em>{{elementU.IS}}I</em></td><td><em>{{elementU.degreeInAngle}}</em></td><td><em>{{elementU.sinfS}}</em></td><td><em>{{elementU.powerQS}}UI</em></td>
+                </tr>
+                <tr>
+                    <td>元件2</td><td><em>{{elementV.US}}U</em></td><td><em>{{elementV.IS}}I</em></td><td><em>{{elementV.degreeInAngle}}</em></td><td><em>{{elementV.sinfS}}</em></td><td><em>{{elementV.powerQS}}UI</em></td>
+                </tr>
+ 
+                <tr>
+                    <td colspan="5">合计</td><td><em>{{thisPowerQS}}UI</em></td>
+                </tr>
+                
+            </table>
+            <br />
+
+            <div style="border-radius:10px;background-color:green;">
+              <p style="font-size:large;margin:10px;padding:10px;">
+                电表正确接法：<br />
+                <em>
+                    Q<sub>正确</sub> = 3UIsin&phi;=3&times;{{sin}}%&times;UI = {{normalPowerQS}}UI
+                </em>
+                <br /><br />
+                当前接法:<br />
+                <em>
+                    Q<sub>当前</sub>={{thisPowerQS}}UI
+                </em>
+                <br /><br />
+                更正系数:<br />
+                <em>
+                    K<sub>q</sub> =Q<sub>正确</sub>&divide;Q<sub>当前</sub>= {{adjustmentFactorQ}}%
+                </em>
+              </p>
+            </div>
+            </div>
+        </div>
+       
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                uUPer:100,
+                uUSource:"Uuv",
+                iUPer:100,
+                iUSource:"Iu",
+                uVPer:100,
+                uVSource:"Uwv",
+                iVPer:100,
+                iVSource:"Iw",
+
+                induOrCapa:"indu",
+                cos:90,
+                sin:0,
+                vectorUu:null,
+                vectorUv:null,
+
+                vectorIu:null,
+                VectorIv:null,
+
+                ctx:null,
+                elementU:null,
+                elementV:null,
+
+                normalPower:0,
+                normalPowerS:0,
+                normalPowerQ:0,
+                normalPowerQS:0,
+                thisPower:0,
+                thisPowerS:0,
+                thisPowerQ:0,
+                thisPowerQS:0,
+                adjustmentFactor:0,
+                adjustmentFactorQ:0,
+                resultShow:false,
+                showQ:false
+            },
+            mounted:function(){
+                this.loadVectors();
+                this.newElements();
+            },
+            methods:{
+                loadVectors:function(){
+                    this.vectorUu = new Vector(this.uUPer,this.uUSource,100,"indu");
+                    this.vectorUv = new Vector(this.uVPer,this.uVSource,100,"indu");
+
+                    this.vectorIu = new Vector(this.iUPer,this.iUSource,this.cos,this.induOrCapa);
+                    this.vectorIv = new Vector(this.iVPer,this.iVSource,this.cos,this.induOrCapa);
+  
+                    this.ctx = document.getElementById("canv").getContext("2d");
+                    this.drawVectors();
+                },
+
+                newElements:function(){
+                    this.elementU=new Element(this.vectorUu.len,this.vectorIu.len,this.vectorUu.degree,this.vectorIu.degree);
+                    this.elementV=new Element(this.vectorUv.len,this.vectorIv.len,this.vectorUv.degree,this.vectorIv.degree);
+  
+                    this.normalPower = 3 * this.cos;
+                    this.sin=(Math.sin(Math.acos(this.cos/100))*100).toFixed(2);
+                    this.normalPowerQ = 3 * this.sin /100;
+                    this.thisPower =this.elementU.power + this.elementV.power ;
+                    this.thisPowerQ=this.elementU.powerQ+ this.elementV.powerQ ;
+                    this.normalPowerS = this.normalPower.toFixed(2);
+                    this.normalPowerQS =this.normalPowerQ.toFixed(2);
+                    this.thisPowerS = this.thisPower.toFixed(2);
+                    this.thisPowerQS=this.thisPowerQ.toFixed(2);
+                    this.adjustmentFactor =(100 * this.normalPower / this.thisPower).toFixed(2);
+                    this.adjustmentFactorQ =(100 * this.normalPowerQ / this.thisPowerQ).toFixed(2);
+                },
+
+                calc:function(){
+                    this.elementU.build(this.vectorUu.len,this.vectorIu.len,this.vectorUu.degree,this.vectorIu.degree);
+                    this.elementV.build(this.vectorUv.len,this.vectorIv.len,this.vectorUv.degree,this.vectorIv.degree);
+                     this.normalPower = 3 * this.cos /100;
+                    this.sin=(Math.sin(Math.acos(this.cos/100))*100).toFixed(2);
+                    this.normalPowerQ = 3 * this.sin /100;
+                    this.normalPowerS = this.normalPower.toFixed(2);
+                    this.normalPowerQS =this.normalPowerQ.toFixed(2);
+                    this.thisPower =this.elementU.power + this.elementV.power ;
+                    this.thisPowerQ=this.elementU.powerQ+ this.elementV.powerQ ;
+                    this.thisPowerS = this.thisPower.toFixed(2);
+                    this.thisPowerQS=this.thisPowerQ.toFixed(2);
+                    this.adjustmentFactor =(100 * this.normalPower / this.thisPower).toFixed(2);
+                    this.adjustmentFactorQ =(100 * this.normalPowerQ / this.thisPowerQ).toFixed(2);
+                    this.showQ = false;
+                    this.resultShow=true;
+                },
+
+                reloadVectors:function(){
+                    this.resultShow=false;
+                    this.vectorUu.builder(this.uUPer,this.uUSource,100,"indu");
+                    this.vectorUv.builder(this.uVPer,this.uVSource,100,"indu");
+           
+                    this.vectorIu.builder(this.iUPer,this.iUSource,this.cos,this.induOrCapa);
+                    this.vectorIv.builder(this.iVPer,this.iVSource,this.cos,this.induOrCapa);
+     
+                    this.drawVectors();
+                },
+
+                show:function(){
+                    this.reloadVectors(); 
+                },
+
+                drawVector:function(vector,width,color,scale){
+                    var xx=vector.x()*scale;
+                    var yy=vector.y()*scale;
+                    var xx1=200+(20*Math.cos(Math.PI + vector.degree - Math.PI / 15)+xx);
+                    var yy1=200-(20*Math.sin(Math.PI + vector.degree - Math.PI / 15)+yy);
+                    var xx2=200+(20*Math.cos(Math.PI + vector.degree + Math.PI / 15)+xx);
+                    var yy2=200-(20*Math.sin(Math.PI + vector.degree + Math.PI / 15)+yy);
+                    this.ctx.lineWidth=width;
+                    this.ctx.strokeStyle=color;
+                    this.ctx.fillStyle=color;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(200,200);
+                    this.ctx.lineTo(200+scale*vector.x(),200-scale*vector.y());
+                    this.ctx.stroke();
+                    if(vector.len>25){
+                        this.ctx.beginPath();
+                        this.ctx.lineWidth="1";
+                        this.ctx.moveTo(200+scale*vector.x(),200-scale*vector.y());
+                        this.ctx.lineTo(xx1,yy1);
+                        //his.ctx.moveTo(200+scale*vector.x(),200-scale*vector.y());
+                        this.ctx.lineTo(xx2,yy2);
+                        this.ctx.closePath();
+                        this.ctx.fill();
+                    }
+                },
+                drawVectors:function(){
+                    var scale=180 / Math.max(
+                        Math.abs(this.vectorUu.x()),Math.abs(this.vectorUu.y()),
+                        Math.abs(this.vectorUv.x()),Math.abs(this.vectorUv.y()),
+                        Math.abs(this.vectorIu.x()),Math.abs(this.vectorIu.y()),
+                        Math.abs(this.vectorIv.x()),Math.abs(this.vectorIv.y())
+                    );
+                    /*
+                    this.ctx.strokeStyle = "white";
+                    this.ctx.moveTo(0,200);
+                    this.ctx.lineTo(400,200);
+                    this.ctx.moveTo(200,0);
+                    this.ctx.lineTo(200,400);
+                    this.ctx.stroke();*/
+                    
+                    this.ctx.fillStyle="black";
+                    this.ctx.beginPath();
+                    this.ctx.fillRect(0,0,400,400);
+                    this.ctx.fill();
+
+                 
+                    this.drawVector(this.vectorUu,"03","yellow",scale); 
+                    this.drawVector(this.vectorUv,"03","green",scale);
+                    this.drawVector(this.vectorIu,"01","yellow",scale);
+                    this.drawVector(this.vectorIv,"01","green",scale);
+
+                }
+            }        
+        })
+    </script>
+
+</body>
+</html>
