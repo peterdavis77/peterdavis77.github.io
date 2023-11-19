@@ -109,7 +109,8 @@
             this.degreeU=degreeU;
             this.degreeI=degreeI;
             this.degree=this.degreeU-this.degreeI;
-            this.degree=this.degree>Math.PI?2*Math.PI-this.degree:this.degree;
+            this.degree=this.degree>Math.PI?this.degree-2*Math.PI:this.degree;
+            this.degree=this.degree<(-1)*Math.PI?this.degree+2*Math.PI:this.degree;
             this.degreeInAngle=(this.degree * 180 / Math.PI).toFixed(2);
             this.cosf=Math.cos(this.degree);
             this.sinf=Math.sin(this.degree);
@@ -343,6 +344,7 @@
                     this.elementV.build(this.vectorUv.len,this.vectorIv.len,this.vectorUv.degree,this.vectorIv.degree);
                      this.normalPower = 3 * this.cos /100;
                     this.sin=(Math.sin(Math.acos(this.cos/100))*100).toFixed(2);
+                    this.sin=this.induOrCapa=='capa'?(-1)*this.sin:this.sin;
                     this.normalPowerQ = 3 * this.sin /100;
                     this.normalPowerS = this.normalPower.toFixed(2);
                     this.normalPowerQS =this.normalPowerQ.toFixed(2);
