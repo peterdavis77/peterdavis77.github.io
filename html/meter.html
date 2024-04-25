@@ -125,22 +125,35 @@
     }
       </script>
       <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<!--
       <p style="text-align:center">
+
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">本页访问量<span id="busuanzi_value_page_pv"></span>次</span>
       </p>
-        <p style="text-align:center">
-        <span style="padding:5px;margin:5px;border-radius:3px;color:black;background-color:green;box-shadow:-10px 0 10px #2a155c"><a href="/">返回作者首页</a></span>&nbsp;&nbsp;
+-->
+<div>
+<div style="float:left;">
+<image src="../images/meterbanner.png">
+</div>
+<h2>
+&nbsp;电表向量图形计算器(三相四线)
+</h2>
+&nbsp;&copy 河津市供电公司, 仅供测试,bug和建议提交: peter_davis@163.com
+</div>
+<hr>
+<p style="text-align:left">
+        <span style="padding:5px;margin:5px;border-radius:3px;color:black;background-color:green;box-shadow:-10px 0 10px #2a155c"><a href="/">博客首页</a></span>&nbsp;&nbsp;
         <span style="padding:5px;margin:5px;border-radius:3px;color:black;background-color:green;box-shadow:-10px 0 10px green">三相四线 </span>&nbsp;&nbsp;
         <span style="padding:5px;margin:5px;border-radius:3px;color:black;background-color: aqua;"><a href="meter3p3w1.html">三相三线</a></span>
-    </p> 
+       <span style="padding:5px;margin:5px;border-radius:3px;color:black;background-color: aqua;"><a href="meter.pdf">使用文档</a></span>
+</p>
+    <div id="app" style="border: 1px;font-family:monospace;">
 
-    <div id="app" style="border: 1px;font-family:monospace;width:400px">
-
-        <div style="float:left">
+        <div style="width: 410px; float: left;">
         <canvas id="canv" width="400" height="400" style="border:1px solid #ffffff">not surport canvas</canvas>              
                 
-        <div style="background-color:yellow;color:black;" float="left">
+        <div style="background-color:yellow;color:black;" >
             元件1 
             电压
             <input type="number" v-model="uUPer" style="width:50px;" @change="show" /> %
@@ -201,7 +214,8 @@
         <button  @click="calc">计算</button>
         <br /><br />
         </div>
-        <div v-if="resultShow" v-cloak style="width:410px;margin-left:410px">
+
+        <div v-if="resultShow" v-cloak style="width:410px; float: left;">
             
             <table style="width:100%;font-size:large">
                 <tr>
@@ -284,10 +298,12 @@
                 </em>
               </p>
             </div>
-            </div>
         </div>
-       
+ 
+    </div> 
+
     </div>
+
     <script type="text/javascript">
         var vm = new Vue({
             el:"#app",
@@ -451,6 +467,7 @@
             }        
         })
     </script>
+
 
 </body>
 </html>
