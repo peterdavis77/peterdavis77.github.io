@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"peterdavis77.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="可以愉快的用LaTeX语法写公式了！">
+    <meta name="description" content="汉诺塔问题是一个经典的递归问题。汉诺塔（Hanoi Tower），又称河内塔，源于印度一个古老传说。大梵天创造世界的时候做了三根金刚石柱子，在一根柱子上从下往上按照大小顺序摞着64片黄金圆盘。大梵天命令婆罗门把圆盘从下面开始按大小顺序重新摆放在另一根柱子上。并且规定，任何时候，在小圆盘上都不能放大圆盘，且在三根柱子之间一次只能移动一个圆盘。问应该如何操作？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo公式试验成功">
-<meta property="og:url" content="https://peterdavis77.github.io/2023/06/07/hexo%E5%85%AC%E5%BC%8F%E8%AF%95%E9%AA%8C%E6%88%90%E5%8A%9F/index.html">
+<meta property="og:title" content="用haskell实现汉诺塔">
+<meta property="og:url" content="https://peterdavis77.github.io/2024/07/06/%E7%94%A8haskell%E5%AE%9E%E7%8E%B0%E6%B1%89%E8%AF%BA%E5%A1%94/index.html">
 <meta property="og:site_name" content="Peter&#39;s blog">
-<meta property="og:description" content="可以愉快的用LaTeX语法写公式了！">
+<meta property="og:description" content="汉诺塔问题是一个经典的递归问题。汉诺塔（Hanoi Tower），又称河内塔，源于印度一个古老传说。大梵天创造世界的时候做了三根金刚石柱子，在一根柱子上从下往上按照大小顺序摞着64片黄金圆盘。大梵天命令婆罗门把圆盘从下面开始按大小顺序重新摆放在另一根柱子上。并且规定，任何时候，在小圆盘上都不能放大圆盘，且在三根柱子之间一次只能移动一个圆盘。问应该如何操作？">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-06-07T11:27:46.000Z">
-<meta property="article:modified_time" content="2023-09-06T02:28:03.588Z">
+<meta property="article:published_time" content="2024-07-06T06:21:32.000Z">
+<meta property="article:modified_time" content="2024-07-06T06:41:00.084Z">
 <meta property="article:author" content="PETER DING">
-<meta property="article:tag" content="katex">
+<meta property="article:tag" content="haskell">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://peterdavis77.github.io/2023/06/07/hexo%E5%85%AC%E5%BC%8F%E8%AF%95%E9%AA%8C%E6%88%90%E5%8A%9F/">
+<link rel="canonical" href="https://peterdavis77.github.io/2024/07/06/%E7%94%A8haskell%E5%AE%9E%E7%8E%B0%E6%B1%89%E8%AF%BA%E5%A1%94/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://peterdavis77.github.io/2023/06/07/hexo%E5%85%AC%E5%BC%8F%E8%AF%95%E9%AA%8C%E6%88%90%E5%8A%9F/","path":"2023/06/07/hexo公式试验成功/","title":"hexo公式试验成功"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://peterdavis77.github.io/2024/07/06/%E7%94%A8haskell%E5%AE%9E%E7%8E%B0%E6%B1%89%E8%AF%BA%E5%A1%94/","path":"2024/07/06/用haskell实现汉诺塔/","title":"用haskell实现汉诺塔"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>hexo公式试验成功 | Peter's blog</title>
+<title>用haskell实现汉诺塔 | Peter's blog</title>
   
 
 
@@ -173,7 +173,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://peterdavis77.github.io/2023/06/07/hexo%E5%85%AC%E5%BC%8F%E8%AF%95%E9%AA%8C%E6%88%90%E5%8A%9F/">
+    <link itemprop="mainEntityOfPage" href="https://peterdavis77.github.io/2024/07/06/%E7%94%A8haskell%E5%AE%9E%E7%8E%B0%E6%B1%89%E8%AF%BA%E5%A1%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -186,12 +186,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="hexo公式试验成功 | Peter's blog">
+      <meta itemprop="name" content="用haskell实现汉诺塔 | Peter's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo公式试验成功
+          用haskell实现汉诺塔
         </h1>
 
         <div class="post-meta-container">
@@ -201,15 +201,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2023-06-07 19:27:46" itemprop="dateCreated datePublished" datetime="2023-06-07T19:27:46+08:00">2023-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-06 10:28:03" itemprop="dateModified" datetime="2023-09-06T10:28:03+08:00">2023-09-06</time>
+      <time title="创建时间：2024-07-06 14:21:32 / 修改时间：14:41:00" itemprop="dateCreated datePublished" datetime="2024-07-06T14:21:32+08:00">2024-07-06</time>
     </span>
 
   
@@ -228,29 +222,14 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>可以愉快的用LaTeX语法写公式了！</p>
+    <div class="post-body" itemprop="articleBody"><p>汉诺塔问题是一个经典的递归问题。汉诺塔（Hanoi Tower），又称河内塔，源于印度一个古老传说。大梵天创造世界的时候做了三根金刚石柱子，在一根柱子上从下往上按照大小顺序摞着64片黄金圆盘。大梵天命令婆罗门把圆盘从下面开始按大小顺序重新摆放在另一根柱子上。并且规定，任何时候，在小圆盘上都不能放大圆盘，且在三根柱子之间一次只能移动一个圆盘。问应该如何操作？</p>
 <span id="more"></span>
-<p>mathjax试验失败，似乎必须安装pandoc新版，我这个wsl1仿佛不好安装，放弃</p>
-<p>katex试验成功，不需要设置hexo的_config.yml, 只需要设置Next主题的_config.yml,即可。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">katex:</span></span><br><span class="line">	<span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">	<span class="attr">copy_tex:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<p>同时需要更换渲染引擎，把原来的引擎卸载，安装新的引擎如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus --save</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p>然后我们就可以使用latex语法愉快的写公式了！😃</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ax^2+bx+c=0 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9474379999999999em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></span></p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mo>−</mo><mi>b</mi><mo>±</mo><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>a</mi><mi>c</mi></mrow></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.276389em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.590389em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">a</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">±</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.913389em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">4</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span></span></span><span style="top:-2.873389em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
-c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
-c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
-c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
-s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
-c69,-144,104.5,-217.7,106.5,-221
-l0 -0
-c5.3,-9.3,12,-14,20,-14
-H400000v40H845.2724
-s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
-c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
-M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.12661100000000003em;"><span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>haskell三行源码解决问题:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">hanoi</span>::[<span class="type">Char</span>]-&gt;[<span class="type">Char</span>]-&gt;[<span class="type">Char</span>]-&gt;<span class="type">Int</span>-&gt;[[<span class="type">Char</span>]]</span><br><span class="line"><span class="title">hanoi</span> from _ too <span class="number">0</span> = []</span><br><span class="line"><span class="title">hanoi</span> from middle too n = (hanoi from too middle (n-<span class="number">1</span>)) ++ [from ++ <span class="string">&quot;-&gt;&quot;</span> ++ too] ++ (hanoi middle from too (n-<span class="number">1</span>))</span><br><span class="line"><span class="comment">-- 调用 hanoi &quot;1&quot; &quot;2&quot; &quot;3&quot; 5 (假设5个金片，3根柱子的名字就叫 1 2 3)</span></span><br></pre></td></tr></table></figure>
+<p>done!</p>
+<p>别试原题64个金片啊，用一个C语言的程序试了一下，把结果写到文件里，运行了几十秒也不见结束，赶紧停止，一看生成的半截文件已经好几百兆了。</p>
+<p>C语言的源程序也贴出来，比较一下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">hanoi</span><span class="params">(<span class="type">int</span> num,<span class="type">int</span> from,<span class="type">int</span> by,<span class="type">int</span> to)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    hanoi(num<span class="number">-1</span>,from,to,by);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d--&gt;%d\n&quot;</span>,from,to);</span><br><span class="line">    hanoi(num<span class="number">-1</span>,by,from,to);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span>&#123;</span><br><span class="line">    hanoi(atoi(argv[<span class="number">1</span>]),<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -260,21 +239,18 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/katex/" rel="tag"><i class="fa fa-tag"></i> katex</a>
+              <a href="/tags/haskell/" rel="tag"><i class="fa fa-tag"></i> haskell</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/05/26/%E7%94%B5%E8%A1%A8%E6%9B%B4%E6%AD%A3%E7%B3%BB%E6%95%B0%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%E4%B8%8A%E7%BA%BF%E6%88%90%E5%8A%9F/" rel="prev" title="电表更正系数计算程序上线成功">
-                  <i class="fa fa-angle-left"></i> 电表更正系数计算程序上线成功
+                <a href="/2024/07/05/%E7%94%A8haskell%E5%AE%9E%E7%8E%B0%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" rel="prev" title="用haskell实现选择排序">
+                  <i class="fa fa-angle-left"></i> 用haskell实现选择排序
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/06/12/grub2%E5%90%AF%E5%8A%A8Windows-10/" rel="next" title="grub2启动Windows 10">
-                  grub2启动Windows 10 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
