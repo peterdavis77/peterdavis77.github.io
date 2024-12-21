@@ -28,7 +28,7 @@
 <meta property="og:description" content="一个&quot;天才&quot;的排序算法,哈哈 :">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-09T15:41:32.000Z">
-<meta property="article:modified_time" content="2024-11-09T15:51:00.791Z">
+<meta property="article:modified_time" content="2024-12-21T08:25:09.650Z">
 <meta property="article:author" content="PETER DING">
 <meta property="article:tag" content="bash">
 <meta property="article:tag" content="sleep sort">
@@ -202,9 +202,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-11-09 23:41:32 / 修改时间：23:51:00" itemprop="dateCreated datePublished" datetime="2024-11-09T23:41:32+08:00">2024-11-09</time>
+      <time title="创建时间：2024-11-09 23:41:32" itemprop="dateCreated datePublished" datetime="2024-11-09T23:41:32+08:00">2024-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-21 16:25:09" itemprop="dateModified" datetime="2024-12-21T16:25:09+08:00">2024-12-21</time>
     </span>
 
   
@@ -228,6 +234,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">mysort</span></span>()&#123;</span><br><span class="line">    <span class="built_in">sleep</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> [  <span class="string">&quot;<span class="variable">$#</span>&quot;</span> -gt 0 ];<span class="keyword">do</span> </span><br><span class="line">    mysort <span class="string">&quot;<span class="variable">$1</span>&quot;</span> &amp;</span><br><span class="line">    <span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">wait</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sleepsort 6 2 5 4</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>睡眠排序不是一种传统的、用于实际生产环境的高效排序算法。它的出现主要是在程序员之间的讨论和代码分享中，用于展示并发编程的有趣应用和一些新奇的想法。它凸显了利用进程（线程）的时间特性来解决问题的思路，也让人们对排序算法的实现有了更广泛的思考，同时也体现了程序员们在探索编程可能性时的创意。不过，由于其实现依赖于进程（线程）的睡眠机制，受到操作系统调度、资源分配等多种不确定因素的影响，它在准确性和效率方面都有很大的局限性。</p>
+<p>update &lt;2024-12-21&gt;</p>
 
     </div>
 
